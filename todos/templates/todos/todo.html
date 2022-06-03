@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock style %}
+
+
+{% block content %}
+  <div class="card">
+    <h2 id="today"></h2>
+    <h2 id="clock"></h2>
+
+    <form id="todo-form">
+      <input type="text" placeholder="  오늘의 계획을 적어주세요." required>
+    </form>
+
+    <ul id="todo-list"></ul>
+
+    <div class="atag">
+      <a class="gotod" href="{% url 'todos:index' %}">📅</a>
+      <a class="save" href="{% url 'todos:new' %}">💾</a>
+    </div>
+  </div>
+
+  <img id="bgImage" src="{% static 'todos/img/3.jpg'%}" alt="backgroung">
+{% endblock content %}
+
+{% block java %}
+  <script src="{% static 'todos/js/todolist.js' %}"></script>
+  <script src="{% static 'todos/js/clock.js' %}"></script>
+  <script src="{% static 'todos/js/background.js' %}"></script>
+{% endblock java %}
+

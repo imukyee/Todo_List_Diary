@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock style %}
+
+{% block content %}
+  <h1>DIARY</h1>
+  <hr>
+  {% for diary in diarys %}
+    <p>{{ diary.pk }}번) {{ diary.created_at }}</p>
+    <ul>
+      {% for key, value in diary.todos.items %}
+        <li>
+          {% if key in check %} 
+            <p class="done"> {{ value }}</p>
+          {% else %}
+            <p> {{ value }}</p>
+          {% endif %} 
+        </li>
+      {% endfor %}
+    </ul>
+    <p>content: {{ diary.content }}</p>
+    <a href="{% url 'todos:delete' diary.pk %}">🗑</a>  
+    <hr>
+  {% endfor %}
+  <a href="{% url 'todos:todo' %}">📝</a>
+{% endblock content %}
+
+{% block java %}
+{% endblock java %}

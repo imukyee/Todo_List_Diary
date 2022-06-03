@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock style %}
+
+{% block content %}
+  <form action="{% url 'todos:create' %}" method="GET">
+    
+    <ul id="todo-list">
+    </ul>
+    <div class="textarea">
+      <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+    </div>
+    <br>
+    <div class="submit-button">
+      <input type="submit" class="submit" value="Submit">
+    </div>
+  </form>
+  <div class="back">
+    <a href="{% url 'todos:todo' %}">📝</a>
+  </div>
+{% endblock content %}
+
+{% block java %}
+  <script src="{% static 'todos/js/savetodo.js' %}"></script>
+{% endblock java %}
